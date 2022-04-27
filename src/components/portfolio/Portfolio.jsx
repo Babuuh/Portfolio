@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Portfolio.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import sidebar from '../../images/sidebar.png';
@@ -6,20 +6,29 @@ import Ecommerce from '../../images/ecommerce.png';
 import HOC from '../../images/hoc.png';
 import MusicApp from '../../images/musicapp.png';
 import 'swiper/css';
+import { themeContext } from '../../Context';
+
 
 function Portfolio() {
+    const theme = useContext(themeContext);
+    const darkMode = theme.state.darkMode;
+
   return (
-    <div className="portfolio">
+    <div className="portfolio" id='portfolio'>
 
         {/* heading */}
-        <span>Recent Projects</span>
+        <span style={{ color: darkMode ? "white" : "" }}>Recent Projects</span>
         <span>Portfolio</span>
 
         {/* Slider */}
 
         <Swiper
-        spaceBetween={3}
-        slidesPerView={3}
+        breakpoints ={{
+            480:{
+                width: 480,
+                slidesPerView: 1,
+            }
+        }}
         grabCursor={true}
         className='portfolio-slider'
         >

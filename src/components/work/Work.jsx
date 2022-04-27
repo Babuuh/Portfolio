@@ -1,25 +1,31 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Work.css";
 import Upwork from "../../images/Upwork.png";
 import Fiverr from "../../images/fiverr.png";
 import Facebook from "../../images/Facebook.png";
 import Amazon from "../../images/amazon.png";
 import Shopify from "../../images/Shopify.png";
+import { themeContext } from "../../Context";
+import {Link} from 'react-scroll'
 
-function Work() {
+const Work = () => {
+  const theme = useContext(themeContext);
+  const darkMode = theme.state.darkMode;
   return (
-    <div className="works">
+    <div className="works" id="Work">
       <div className="awesome">
-        <span>Works for all These</span>
+      <span style={{ color: darkMode ? "white" : "" }}>
+            Works for All these
+          </span>
         <span>Brands and Clients</span>
         <span>
           Over the years I have acquired and perfected
           <br />
           various Skills and Technologies
         </span>
-        <a href="/" alt="">
+        <Link to="contact-form" smooth={true} spy={true}>
           <button className="button s-button">Hire Me</button>
-        </a>
+        </Link>
         <div
           className="blur s-blur1"
           style={{
